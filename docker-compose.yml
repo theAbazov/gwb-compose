@@ -72,7 +72,22 @@ services:
     ports:
       - "${FRONTEND_PORT:-5173}:${FRONTEND_PORT:-5173}"
 
+  caddy:
+    image: caddy:2
+    container_name: gwb-caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+    depends_on:
+      - backend
+      - frontend
+      - minio
+
 volumes:
   db_data:
   minio_data:
-
+  caddy_data:

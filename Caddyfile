@@ -1,0 +1,19 @@
+{
+    email theabbazov@gmail.com
+}
+
+app.putevoi.com {
+    reverse_proxy gwb-front:5173
+}
+
+api.putevoi.com {
+    reverse_proxy gwb-back:3000
+}
+
+minio.putevoi.com {
+    reverse_proxy gwb-minio:8000
+}
+
+minio-console.putevoi.com {
+    reverse_proxy gwb-minio:8001
+}
